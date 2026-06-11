@@ -68,3 +68,31 @@ url-shortener/
 └── main.go
 ```
 
+## AI Usage :
+
+Frontend is completely vibe coded using opencode zen free models MiMo v2.5 high 
+
+it also modified the router/router.go to connect the front-end 
+
+this part is vibecoded
+```GO
+
+	http.HandleFunc("/app/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "frontend/index.html")
+	})
+
+	http.HandleFunc("/app", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/app/", http.StatusTemporaryRedirect)
+	})
+
+```
+
+# Photos
+
+## This is not a longURL i know but it work on all URL btw :) 
+
+![alt text](Images/image.png)
+
+## The result 
+
+![alt text](Images/result.png)
