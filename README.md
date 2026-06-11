@@ -5,21 +5,26 @@ URL Shortener allows users to input a long URL and receive a shortened version o
 
 clone the repo 
 
+Run using Docker :
+
+```bash
+docker-compose up
+```
+
+### OR 
+
+Start Redis:
+
+```bash
+docker run -d -p 6379:6379 --name redis redis
+```
+
 install go dep 
 
 ```bash
 go mod tidy
 ```
 
-Start Redis:
-
-```bash
-docker run -d -p 6379:6379 --name redis redis
-```
-Start Redis:
-```bash
-docker run -d -p 6379:6379 --name redis redis
-```
 run the server 
 
 ```bash
