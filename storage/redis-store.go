@@ -47,3 +47,12 @@ func (s *RedisStore) SaveURL(originalURL string) (string, error){
 	return hashURLtoString, nil
 }
 
+func (s *RedisStore) GetOriginURL(shortURL string) (string, error){
+	originURL, err := s.Client.Get(ctx, shortURL).Result();
+	
+	if  err != nil { 
+		return "", err
+	}
+
+	return originURL ,nil
+}
