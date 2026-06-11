@@ -1,31 +1,70 @@
 # What is URL-Shortener
 URL Shortener allows users to input a long URL and receive a shortened version of it.
 
-# How it is work 
+# Set-up 
 
-it is so simple 
+clone the repo 
 
-![Design](image.png)
+install go dep 
 
-and when the user try to click the new short link it is open the long link
-
-# Project structure 
-```
-        url-shortener/
-            ├── handlers/         # API logic for handling requests
-            │   └── handlers.go
-            ├── models/           # Data models
-            │   └── url.go
-            ├── router/           # Routing setup
-            │   └── router.go
-            ├── storage/          # Redis interactions
-            │   └── redis-store.go
-            ├── main.go           # Application entry point
-            ├── Dockerfile        # Docker configuration
-            ├── docker-compose.yml
-            └── go.mod            # Go module file
+```bash
+go mod tidy
 ```
 
-# Learning resources 
+Start Redis:
 
-1- 
+```bash
+docker run -d -p 6379:6379 --name redis redis
+```
+Start Redis:
+```bash
+docker run -d -p 6379:6379 --name redis redis
+```
+run the server 
+
+```bash
+go run main.go
+```
+
+```bash
+Server starts on http://localhost:8080
+```
+
+### API endpoints 
+
+1- POST /shorten : Create the shortURL 
+
+on the body json write 
+
+```json
+{
+    "url": "" // here write the longURL bet ""
+}
+```
+
+Response 
+
+```json
+{
+  "short_url": "http://localhost:8080/{SomeNumbers}"
+}
+```
+
+2- GET /{hash} : redirect to original URL
+
+
+### Project Structure
+```
+url-shortener/
+├── handlers/
+│   └── handlers.go      # HTTP handlers (ShortenURL, RedirectURL)
+├── models/
+│   └── url.go           # Request/Response structs
+├── router/
+│   └── router.go        # Route registration + server start
+├── storage/
+│   └── redis-store.go   # Redis connection, SaveURL, GetOriginalURL
+├── go.mod
+└── main.go
+```
+
