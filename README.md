@@ -35,6 +35,23 @@ go run main.go
 Server starts on http://localhost:8080
 ```
 
+## Teck used :
+
+- Go 
+- Redis
+- Docker 
+- HTML, CSS, JS (This part was vibecoded)
+
+## How it work : 
+
+- The Main concept is taking some long URL like http://{domainName}/{LongURL} and make it http://localhost:8080/{shortURL}
+-  the request come with the longURL so i take this request and use fnv-1a hash for the longURL and it output somelong numbers too so i take the first 6 characters of the hex hash
+- on redis i store the URL like this 
+originalURL : ShortURL, 
+ShortURL : OriginalURL 
+for the mapping between the two of them so when i click the short URL it redirect to the longURL using this mapping on the handler 
+
+
 ### API endpoints 
 
 1- POST /shorten : Create the shortURL 
@@ -94,7 +111,7 @@ this part is vibecoded
 
 # Photos
 
-## This is not a longURL i know but it work on all URL btw :) 
+## write any longURL
 
 ![alt text](Images/image.png)
 
